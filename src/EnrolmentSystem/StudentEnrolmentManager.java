@@ -1,14 +1,26 @@
 package EnrolmentSystem;
 
+import java.util.List;
+
 public interface StudentEnrolmentManager {
-        void add(); // interface method
+        boolean addEnrolment(String studentId, String courseId, String semester);
 
-        void update(); // interface method
+        boolean updateEnrolment(String studentId);
 
-        void delete(); // interface method
+        boolean deleteEnrolment(String studentId);
 
-        void getOne(); // interface method
+        List<Enrolment> getEnrolments();
 
-        void getAll(); // interface method
+        List<Enrolment> getEnrolmentsByCourseId(String courseId);
+
+        List<Enrolment> getEnrolmentsByStudentId(String studentId);
+
+        List<Course> getCoursesInSemester(String semester);
+
+        List<Course> getCoursesOfStudentInSemseter(String studentId, String semester);
+
+        List<Student> getStudentsInCourseInSemester(String courseId, String semester);
+
+        List<String> getSemesters();
 
     }

@@ -6,9 +6,15 @@ public class Main {
 
 public static void main(String[] args){
 
-        Scanner studentID = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        String studentID = scanner.nextLine();
+        System.out.println("Enter the student ID:");
+        String studentName = scanner.nextLine();  // Read user input
+        System.out.println("Enter the student name: ");
+        String studentDOB = scanner.nextLine();  // Read user input
+        System.out.println("Enter the student birthdate: ");
+        Student student = new Student(studentID, studentName, studentDOB);
 
-        Student student = new Student("S3764425", "Tran Trong Vy", "13/11/2000");
         student.setStudentID("S3764425");
         student.setStudentName("Tran Trong Vy");
         student.setBirthdate("13/11/2000");

@@ -12,10 +12,10 @@ public interface StudentEnrolmentManager {
     static void addSemester(String semester){
 
     }
-    static void displayStudentInfo(String studentID) {
+    void displayStudentInfo(String studentID){
 
     }
-    static void displayAllStudents() {
+    void displayAllStudents() {
 
     }
 }

@@ -15,7 +15,12 @@ public static void main(String[] args){
         course.setCourseName("Marketers");
         course.setCredit(12);
 
-        StudentEnrolment studentEnrolment = new StudentEnrolment(student, course, "2021A");
-        System.out.print(studentEnrolment);
+        StudentEnrolment studentEnrolment = new StudentEnrolment();
+
+        //Add Student & Course
+        StudentEnrolment.addCourse(course);
+        StudentEnrolment.addStudent(student);
+
+        System.out.println(studentEnrolment);
         }
 }

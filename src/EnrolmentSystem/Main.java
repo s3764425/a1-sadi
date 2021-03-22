@@ -5,6 +5,9 @@ import java.util.Scanner;
 public class Main {
 
 public static void main(String[] args){
+
+        Scanner studentID = new Scanner(System.in);
+
         Student student = new Student("S3764425", "Tran Trong Vy", "13/11/2000");
         student.setStudentID("S3764425");
         student.setStudentName("Tran Trong Vy");
@@ -15,11 +18,13 @@ public static void main(String[] args){
         course.setCourseName("Marketers");
         course.setCredit(12);
 
+        StudentEnrolmentManager.addSemester("2021A");
+
         StudentEnrolment studentEnrolment = new StudentEnrolment();
 
         //Add Student & Course
-        StudentEnrolment.addCourse(course);
-        StudentEnrolment.addStudent(student);
+        StudentEnrolmentManager.addCourse(course);
+        StudentEnrolmentManager.addStudent(student);
 
         System.out.println(studentEnrolment);
         }

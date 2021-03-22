@@ -50,4 +50,4 @@ public class Student {
     }
 
     @Override
-            public String toString() {return " " + studentName + "ID=" + " " + studentID + "DOB=" + " " + birthdate;}}
+            public String toString() {return studentName + ", " + studentID + ", " + birthdate;}}

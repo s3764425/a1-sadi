@@ -18,6 +18,29 @@ public class StudentEnrolment implements StudentEnrolmentManager {
     public void addStudent(Student student) {
         studentList.add(student);
     }
+    private Student isStudentIncluded(String studentID) {
+        for (Student student:studentList) {
+            if (student.getStudentID().equals(studentID)) {
+                return student;
+            }
+        }
+        return null;
+    }
+
+    public void displayStudentInfo(String studentID) {
+        Student student = isStudentIncluded(studentID);
+        if (student != null) {
+            System.out.println(student);
+            return;
+        }
+        System.out.println("No student with the ID: " + studentID);
+    }
+
+    public void displayAllStudents() {
+        for (Student student:studentList) {
+            System.out.println(student);
+        }
+    }
 
     @Override
     public String toString() {

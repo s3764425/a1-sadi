@@ -5,42 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentEnrolment implements StudentEnrolmentManager {
-    Student student;
-    Course course;
+    private ArrayList<Student> studentList;
+    private ArrayList<Course> courseList;
     private String semester;
-    private ArrayList<StudentEnrolment> studentEnrolmentList = new ArrayList<>();
 
-    public StudentEnrolment(Student student, Course course, String semester) {
-        this.student = student;
-        this.course = course;
-        this.semester = semester;
+
+    public StudentEnrolment() {
+        studentList = new ArrayList<Student>();
+        courseList = new ArrayList<Course>();
     }
 
-
-    public Student getStudent() {
-        return student;
+    public void addStudent(Student student) {
+        studentList.add(student);
     }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
-    public String getSemester() {
-        return semester;
-    }
-
-    public void setSemester(String semester) {
-        this.semester = semester;
-    }
-
 
     @Override
     public String toString() {

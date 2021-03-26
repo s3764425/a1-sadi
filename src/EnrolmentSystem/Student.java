@@ -9,14 +9,11 @@ public class Student {
     private String birthdate;
     private ArrayList<Course> courseList;
 
-    public Student(String id, String name, String birthdate) {
-        this.studentName = "Default Student";
-        this.studentID = "s001";}
-
-        public Student(String studentName, String studentID) {
+    public Student(String studentName, String studentID, String birthdate) {
             super();
             this.studentName = studentName;
             this.studentID = studentID;
+            this.birthdate = birthdate;
             courseList = new ArrayList<Course>();}
 
             public ArrayList<Course> getCourseList() {return courseList;}
@@ -50,4 +47,4 @@ public class Student {
     }
 
     @Override
-            public String toString() {return studentName + ", " + studentID + ", " + birthdate;}}
+            public String toString() {return studentID;}}

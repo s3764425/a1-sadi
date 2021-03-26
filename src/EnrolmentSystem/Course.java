@@ -46,6 +46,6 @@ public class Course {
 
     @Override
     public String toString() {
-        return courseName + ", " + courseID + ", " + credit;
+        return courseID;
     }
 }

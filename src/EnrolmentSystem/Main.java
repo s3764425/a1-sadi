@@ -6,32 +6,37 @@ public class Main {
 
 public static void main(String[] args){
 
+        // Student Addition
         Scanner scanner = new Scanner(System.in);
-        String studentID = scanner.nextLine();
+
         System.out.println("Enter the student ID:");
-        String studentName = scanner.nextLine();  // Read user input
+        String studentID = scanner.nextLine();  // Read user input
         System.out.println("Enter the student name: ");
-        String studentDOB = scanner.nextLine();  // Read user input
+        String studentName = scanner.nextLine();  // Read user input
         System.out.println("Enter the student birthdate: ");
+        String studentDOB = scanner.nextLine();
         Student student = new Student(studentID, studentName, studentDOB);
 
-        student.setStudentID("S3764425");
-        student.setStudentName("Tran Trong Vy");
-        student.setBirthdate("13/11/2000");
+        // Course Addition
+        System.out.println("Enter the course ID:");
+        String courseID = scanner.nextLine();  // Read user input
+        System.out.println("Enter the course name: ");
+        String courseName = scanner.nextLine();  // Read user input
+        System.out.println("Enter the course credit: ");
+        int courseCredit = Integer.parseInt(scanner.nextLine());
+        Course course = new Course(courseID, courseName, courseCredit);
 
-        Course course = new Course("COSC2456", "Marketers", 12);
-        course.setCourseID("COSC2456");
-        course.setCourseName("Marketers");
-        course.setCredit(12);
+        System.out.println(course);
 
-        StudentEnrolmentManager.addSemester("2021A");
+        System.out.println("Enter the semester:");
+        String semester = scanner.nextLine();
 
         StudentEnrolment studentEnrolment = new StudentEnrolment();
-
-        //Add Student & Course
-        StudentEnrolmentManager.addCourse(course);
         StudentEnrolmentManager.addStudent(student);
+        StudentEnrolmentManager.addCourse(course);
+        StudentEnrolmentManager.setSemester(semester);
 
+        // Summary
         System.out.println(studentEnrolment);
         }
 }

@@ -14,11 +14,10 @@ public static void main(String[] args) {
 
         Scanner option = new Scanner(System.in);
         int choice = option.nextInt();
-        // Student Addition
-        // Course Addition
-        // Summary
+
         switch (choice) {
                 case 1 -> {
+                        // Student Addition
                         Scanner scanner = new Scanner(System.in);
                         System.out.println("Enter the student ID:");
                         String studentID = scanner.nextLine();  // Read user input
@@ -27,6 +26,8 @@ public static void main(String[] args) {
                         System.out.println("Enter the student birthdate: ");
                         String studentDOB = scanner.nextLine();
                         Student student = new Student(studentID, studentName, studentDOB);
+
+                        // Course Addition
                         System.out.println("Enter the course ID:");
                         String courseID = scanner.nextLine();  // Read user input
                         System.out.println("Enter the course name: ");
@@ -37,6 +38,8 @@ public static void main(String[] args) {
                         System.out.println(course);
                         System.out.println("Enter the semester:");
                         String semester = scanner.nextLine();
+
+                        // Summary
                         StudentEnrolment studentEnrolment = new StudentEnrolment();
                         StudentEnrolmentManager.addStudent(student);
                         StudentEnrolmentManager.addCourse(course);
@@ -44,10 +47,8 @@ public static void main(String[] args) {
                         System.out.println(studentEnrolment);
                 }
                 case 2 -> {
-
                 }
                 case 3 -> {
-
                 }
                 case 4 -> {
                         System.out.println("Now Exit");
@@ -55,4 +56,5 @@ public static void main(String[] args) {
                 default -> throw new IllegalStateException("Wrong number: " + choice);
         }
         }
+}
 }

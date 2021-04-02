@@ -1,6 +1,7 @@
 package EnrolmentSystem;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Course {
     private String courseID;
@@ -42,6 +43,13 @@ public class Course {
 
     public ArrayList<Student> getStudentList() {
         return studentList;
+    }
+
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getStudentList());
     }
 
     @Override

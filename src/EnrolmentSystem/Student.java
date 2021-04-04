@@ -56,11 +56,11 @@ public class Student {
     }
 
     public static Object getAllStudents() {
-        ArrayList<String> students = new ArrayList<>();
+        ArrayList<String> totalInfoStudent = new ArrayList<>();
         for(Student student: studentList) {
-            students.add("ID: " + student.getStudentID() + " " + "Name: " + student.getStudentName());
+            totalInfoStudent.add("ID: " + student.getStudentID() + " " + "Name: " + student.getStudentName());
         }
-        return students;
+        return totalInfoStudent;
     }
     @Override
             public String toString() {return studentID;}}

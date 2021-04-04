@@ -42,7 +42,7 @@ public class StudentEnrolment implements StudentEnrolmentManager {
 
     @Override
     public String toString() {
-        return "Student Enrolled!" + "\n" + student + ',' + course + ',' + semester + ".";
+        return "\n" + student + ',' + course + ',' + semester + ".";
     }
 
     @Override

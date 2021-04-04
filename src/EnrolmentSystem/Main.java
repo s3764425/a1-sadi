@@ -39,6 +39,8 @@ public class Main {
 
         // While Loop for wrong input
         while(true) {
+
+                /* Main Menu */
                 System.out.println("Welcome to the Enrolment System. Please type in the number:");
                 System.out.println("1. Add Enrolment.");
                 System.out.println("2. List Enrolment.");
@@ -46,30 +48,35 @@ public class Main {
                 System.out.println("4. Exit Student.");
                 System.out.println("Enter your choice:");
 
+                // Choice input
                 choice = Integer.parseInt(input.nextLine());
 
         switch (choice) {
                 case 1 -> {
-                        // Student Addition
+                        /* Enrolment Addition */
+
+                        // Student Selection
                         System.out.println("Here are the student's list. Please enter the ID for enrolment: ");
                         System.out.println(Student.getAllStudents());
                         String selectedStudent = input.nextLine();
                         Student student = Student.getStudentID(selectedStudent);
 
+                        // Course Selection
                         System.out.println("Here are the course's list. Please enter the ID for enrolment :");
                         System.out.println(Course.getAllCourses());
                         String selectedCourse = input.nextLine();
                         Course course = Course.getCourseID(selectedCourse);
 
+                        // Semester Assignment
                         System.out.println("Please enter the semester: ");
                         String semester = input.nextLine();
 
+                        // Create new Enrolment object
                         StudentEnrolment studentEnrolment = new StudentEnrolment(student, course, semester);
-                        StudentEnrolmentManager SEmanager;
+                        StudentEnrolmentManager SEmanager; // Create object for interface.
                         SEmanager = studentEnrolment;
-                        SEmanager.add(studentEnrolment);
-                        System.out.println("New enrolment added: " + studentEnrolment);
-                        break;
+                        SEmanager.add(studentEnrolment); // Let interface add the enrolment.
+                        System.out.println("Student Enrolled!" + studentEnrolment);
                 }
                 case 2 -> {
                         System.out.println("Enter student ID:");
@@ -101,12 +108,12 @@ public class Main {
                 }
 
                 case 4 -> {
-                        System.out.println("Now Exit");
+                        // System Exit
+                        System.out.println("Now Exit...");
                         System.exit(0);
-                        break;
                 }
-
                 default -> {
+                        // In case wrong input
                         System.out.println("Wrong Number! Now we will redirect to the Main Menu");
                 }
         }

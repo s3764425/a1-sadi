@@ -1,21 +1,19 @@
 package EnrolmentSystem;
 
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.List;
 
 public class Course {
     private String courseID;
     private String courseName;
     private int credit;
-    private ArrayList<Student> studentList;
+    private static List<Course> courseList;
 
     public Course(String courseID, String courseName, int credit) {
         super();
         this.courseName = courseName;
         this.courseID = courseID;
-        studentList = new ArrayList<Student>();
         this.credit = credit;
-
     }
     public String getCourseID() {
         return courseID;
@@ -41,15 +39,29 @@ public class Course {
         this.credit = credit;
     }
 
-    public ArrayList<Student> getStudentList() {
-        return studentList;
+    public static void addCourse(Course course) {
+        courseList.add(course);
     }
 
+    public static Course getCourseID(String name) {
+        for(Course course: courseList) {
+            if(course.getCourseID().equalsIgnoreCase(name)) {
+                return course;
+            }
+        }
+        return null;
+    }
 
+    public static Object getAllCourses() {
+        List<String> totalInfoCourse = new ArrayList<>();
+        for(Course course: courseList) {
+            totalInfoCourse.add("CourseId: " + course.getCourseID() + " " + "CourseName: " + course.getCourseName());
+        }
+        return totalInfoCourse;
+    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getStudentList());
+    public static List<Course> getCourseList() {
+        return courseList;
     }
 
     @Override

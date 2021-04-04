@@ -2,17 +2,20 @@ package EnrolmentSystem;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class StudentEnrolment implements StudentEnrolmentManager {
-    protected static ArrayList<Student> studentList;
-    private static ArrayList<Course> courseList;
-    private static String semester;
+    private static Student student;
+    private static Course course;
+    private String semester;
+    private static final List<StudentEnrolment> studentEnrolmentList = new ArrayList<StudentEnrolment>();
 
-
-    public StudentEnrolment() {
-        studentList = new ArrayList<Student>();
-        courseList = new ArrayList<Course>();
+    public StudentEnrolment(Student student, Course course, String semester) {
+    StudentEnrolment.student = student;
+    StudentEnrolment.course = course;
+    this.semester = semester
     }
+
 
     static String isStudentIncluded(String studentID) {
         for (Student student : studentList)

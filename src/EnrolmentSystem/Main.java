@@ -2,9 +2,35 @@ package EnrolmentSystem;
 
 import java.util.Scanner;
 
+
+
 public class Main {
 
         public static void main(String[] args) {
+                Student s1 = new Student("s3764425", "Tran Trong Vy", "13/11/2000");
+                Student s2 = new Student("s3653314", "Travis Tran", "12/10/1999");
+                Student.addStudent(s1);
+                Student.addStudent(s2);
+
+                Course c1 = new Course("COSC2041","C++ Programming", 12);
+                Course c2 = new Course("COSC2021","Introduction to Cloud", 12);
+                Course.addCourse(c1);
+                Course.addCourse(c2);
+
+                StudentEnrolment studentEnrolment1 = new StudentEnrolment(s1, c1, "2021A");
+                StudentEnrolment studentEnrolment2 = new StudentEnrolment(s2, c1, "2021A");
+                StudentEnrolment studentEnrolment3 = new StudentEnrolment(s1, c2, "2021A");
+                StudentEnrolment studentEnrolment4 = new StudentEnrolment(s2, c2, "2021A");
+
+                StudentEnrolmentManager e1 = studentEnrolment1;
+                StudentEnrolmentManager e2 = studentEnrolment2;
+                StudentEnrolmentManager e3 = studentEnrolment3;
+                StudentEnrolmentManager e4 = studentEnrolment4;
+
+                e1.add(studentEnrolment1);
+                e2.add(studentEnrolment2);
+                e3.add(studentEnrolment3);
+                e4.add(studentEnrolment4);
 
         // Create Scanner object.
         Scanner input = new Scanner(System.in);
@@ -25,54 +51,71 @@ public class Main {
         switch (choice) {
                 case 1 -> {
                         // Student Addition
-                        System.out.println("Enter the student ID:");
-                        String studentID = input.nextLine();// Read user input
-                        System.out.println("Enter the student name: ");
-                        String studentName = input.nextLine();  // Read user input
-                        System.out.println("Enter the student birthdate: ");
-                        String studentDOB = input.nextLine();
-                        Student student = new Student(studentID, studentName, studentDOB);
+                        System.out.println("Here are the student's list. Please enter the ID for enrolment: ");
+                        System.out.println(Student.getAllStudents());
+                        String selectedStudent = input.nextLine();
+                        Student student = Student.getStudentID(selectedStudent);
 
-                        // Course Addition
-                        System.out.println("Enter the course ID:");
-                        String courseID = input.nextLine();  // Read user input
-                        System.out.println("Enter the course name: ");
-                        String courseName = input.nextLine();  // Read user input
-                        System.out.println("Enter the course credit: ");
-                        int courseCredit = Integer.parseInt(input.nextLine());
-                        Course course = new Course(courseID, courseName, courseCredit);
-                        System.out.println(course);
-                        System.out.println("Enter the semester:");
+                        System.out.println("Here are the course's list. Please enter the ID for enrolment :");
+                        System.out.println(Course.getAllCourses());
+                        String selectedCourse = input.nextLine();
+                        Course course = Course.getCourseID(selectedCourse);
+
+                        System.out.println("Please enter the semester: ");
                         String semester = input.nextLine();
 
-                        // Summary
-                        StudentEnrolment studentEnrolment = new StudentEnrolment();
-                        StudentEnrolmentManager sem = new StudentEnrolment();
-                        sem.add(student, course, semester);
-
-
-
-
-                        System.out.println(studentEnrolment);
+                        StudentEnrolment studentEnrolment = new StudentEnrolment(student, course, semester);
+                        StudentEnrolmentManager SEmanager;
+                        SEmanager = studentEnrolment;
+                        SEmanager.add(studentEnrolment);
+                        System.out.println("New enrolment added: " + studentEnrolment);
+                        break;
                 }
                 case 2 -> {
                         System.out.println("Enter student ID:");
                         String studentID = input.nextLine();
-                        StudentEnrolment.isStudentIncluded(studentID);
-                        while(true) {
-                        System.out.println("Do you want to add or update courses?");
+
+                        do {
+                        System.out.println("Do you want to add or delete courses?");
                         System.out.println("1. Add course");
-                        System.out.println("2. Update course");
+                        System.out.println("2. Delete course");
                         System.out.println("3. Exit to main menu");
 
                         choice = Integer.parseInt(input.nextLine());
 
                         switch (choice) {
-                                case 1:
-                                case 2:
-                                case 3:
+                                case 1 -> {
+                                        for (Student student : studentList) {
+                                                StudentEnrolment.addStudent(student);
+                                                System.out.println("Enter the course ID:");
+                                                String newCourseID = input.nextLine();  // Read user input
+                                                System.out.println("Enter the course name: ");
+                                                String newCourseName = input.nextLine();  // Read user input
+                                                System.out.println("Enter the course credit: ");
+                                                int newCourseCredit = Integer.parseInt(input.nextLine());
+                                                Course newCourse = new Course(newCourseID, newCourseName, newCourseCredit);
+
+                                                System.out.println(newCourse);
+
+                                                System.out.println("Enter the semester:");
+                                                String newSemester = input.nextLine();
+
+                                                StudentEnrolment newEnrolment = new StudentEnrolment(student, newCourse, newSemester);
+                                                StudentEnrolment.getStudentEnrolmentList().add(newEnrolment);
+
+
+                                                System.out.println(newEnrolment);
+                                                break;
+                                        }
+                                }
+                                case 2 -> {
+
+                                }
+                                case 3 -> {
+                                        break;
+                                }
                         }
-                        }
+                        } while (choice != 3);
                 }
 
 

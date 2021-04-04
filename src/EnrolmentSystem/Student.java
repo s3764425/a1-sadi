@@ -1,20 +1,20 @@
 package EnrolmentSystem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Student {
     private String studentName;
-    private static String studentID;
+    private String studentID;
     private String birthdate;
-    private ArrayList<Course> courseList;
+    private static final List<Student> studentList = new ArrayList<>();
 
     public Student( String studentID, String studentName, String birthdate) {
             super();
             this.studentID = studentID;
             this.studentName = studentName;
             this.birthdate = birthdate;
-            courseList = new ArrayList<Course>();}
-
+            }
 
     public String getStudentName() {
         return studentName;
@@ -24,7 +24,7 @@ public class Student {
         this.studentName = studentName;
     }
 
-    public static String getStudentID() {
+    public String getStudentID() {
         return studentID;
     }
 
@@ -40,10 +40,31 @@ public class Student {
         this.birthdate = birthdate;
     }
 
-    public ArrayList<Course> getCourseList() {return courseList;}
+    public static ArrayList<Student> getStudentList() {return studentList;}
+
+    public static void addStudent(Student student) {
+        studentList.add(student);
+    }
+
+    public static Student getStudentID(String name) {
+        for(Student student: studentList) {
+            if(student.getStudentID().equalsIgnoreCase(name)) {
+                return student;
+            }
+        }
+        return null;
+    }
+
+    public static Object getAllStudents() {
+        ArrayList<String> students = new ArrayList<>();
+        for(Student student: studentList) {
+            students.add("ID: " + getStudentID() + " " + "Name: " + student.getStudentName());
+        }
+        return students;
+    }
 
     public void setCourseList(ArrayList<Course> courseList) {
-        this.courseList = courseList;
+        studentList = studentList;
     }
 
     @Override

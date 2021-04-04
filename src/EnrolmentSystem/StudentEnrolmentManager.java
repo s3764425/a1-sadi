@@ -1,11 +1,8 @@
 package EnrolmentSystem;
-
-import java.util.List;
 public interface StudentEnrolmentManager {
-    void add();
-    void update();
-    void delete();
-    void getOne();
+    void add(StudentEnrolment studentEnrolment);
+    void update(String studentID);
+    void delete(String studentID, String courseID);
+    void getOne(String studentID);
     void getAll();
-
 }

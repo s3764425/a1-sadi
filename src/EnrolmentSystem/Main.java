@@ -76,57 +76,36 @@ public class Main {
                         String studentID = input.nextLine();
 
                         do {
-                        System.out.println("Do you want to add or delete courses?");
-                        System.out.println("1. Add course");
-                        System.out.println("2. Delete course");
-                        System.out.println("3. Exit to main menu");
+                                System.out.println("Do you want to add or delete courses?");
+                                System.out.println("1. Add course");
+                                System.out.println("2. Delete course");
+                                System.out.println("3. Exit to main menu");
 
-                        choice = Integer.parseInt(input.nextLine());
+                                choice = Integer.parseInt(input.nextLine());
 
-                        switch (choice) {
-                                case 1 -> {
-                                        for (Student student : studentList) {
-                                                StudentEnrolment.addStudent(student);
-                                                System.out.println("Enter the course ID:");
-                                                String newCourseID = input.nextLine();  // Read user input
-                                                System.out.println("Enter the course name: ");
-                                                String newCourseName = input.nextLine();  // Read user input
-                                                System.out.println("Enter the course credit: ");
-                                                int newCourseCredit = Integer.parseInt(input.nextLine());
-                                                Course newCourse = new Course(newCourseID, newCourseName, newCourseCredit);
-
-                                                System.out.println(newCourse);
-
-                                                System.out.println("Enter the semester:");
-                                                String newSemester = input.nextLine();
-
-                                                StudentEnrolment newEnrolment = new StudentEnrolment(student, newCourse, newSemester);
-                                                StudentEnrolment.getStudentEnrolmentList().add(newEnrolment);
-
-
-                                                System.out.println(newEnrolment);
+                                switch (choice) {
+                                        case 1 -> {
                                                 break;
                                         }
-                                }
-                                case 2 -> {
+
+                                case 2 -> { }
+
+                                case 3 -> { }
 
                                 }
-                                case 3 -> {
-                                        break;
-                                }
-                        }
+
                         } while (choice != 3);
                 }
 
-
-
                 case 3 -> {
                 }
+
                 case 4 -> {
                         System.out.println("Now Exit");
                         System.exit(0);
                         break;
                 }
+
                 default -> {
                         System.out.println("Wrong Number! Now we will redirect to the Main Menu");
                 }

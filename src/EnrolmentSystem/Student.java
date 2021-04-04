@@ -40,7 +40,7 @@ public class Student {
         this.birthdate = birthdate;
     }
 
-    public static ArrayList<Student> getStudentList() {return studentList;}
+    public static List<Student> getStudentList() {return studentList;}
 
     public static void addStudent(Student student) {
         studentList.add(student);
@@ -58,14 +58,9 @@ public class Student {
     public static Object getAllStudents() {
         ArrayList<String> students = new ArrayList<>();
         for(Student student: studentList) {
-            students.add("ID: " + getStudentID() + " " + "Name: " + student.getStudentName());
+            students.add("ID: " + student.getStudentID() + " " + "Name: " + student.getStudentName());
         }
         return students;
     }
-
-    public void setCourseList(ArrayList<Course> courseList) {
-        studentList = studentList;
-    }
-
     @Override
             public String toString() {return studentID;}}

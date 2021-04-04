@@ -7,7 +7,7 @@ public class Course {
     private String courseID;
     private String courseName;
     private int credit;
-    private static List<Course> courseList;
+    private static final List<Course> courseList = new ArrayList<>();
 
     public Course(String courseID, String courseName, int credit) {
         super();
@@ -55,7 +55,7 @@ public class Course {
     public static Object getAllCourses() {
         List<String> totalInfoCourse = new ArrayList<>();
         for(Course course: courseList) {
-            totalInfoCourse.add("CourseId: " + course.getCourseID() + " " + "CourseName: " + course.getCourseName());
+            totalInfoCourse.add("ID: " + course.getCourseID() + " " + "Name: " + course.getCourseName());
         }
         return totalInfoCourse;
     }

@@ -13,73 +13,55 @@ public class StudentEnrolment implements StudentEnrolmentManager {
     public StudentEnrolment(Student student, Course course, String semester) {
     StudentEnrolment.student = student;
     StudentEnrolment.course = course;
-    this.semester = semester
+    this.semester = semester;
     }
 
-
-    static String isStudentIncluded(String studentID) {
-        for (Student student : studentList)
-            if (studentID.equals(Student.getStudentID())) {
-                ArrayList<Course> courseList = StudentEnrolment.getCourseList();
-                System.out.println(courseList);
-            }
-            else
-                System.out.println("No Student Found!");
-            return null;
+    public static Student getStudent(){
+        return student;
     }
 
-    public static void addCourse(Course course) {
-        courseList.add(course);
+    public static void setStudent(Student student) {
+        StudentEnrolment.student = student;
     }
 
-    public static void addStudent(Student student){
-        studentList.add(student);
+    public static Course getCourse() {
+        return course;
     }
 
-    public static void setSemester(String semester) {
-        StudentEnrolment.semester = semester;
-    }
-    public void getAllStudents() {
-
-    }
-
-    public static ArrayList<Course> getCourseList() {
-        return courseList;
-    }
-
-    public static void setCourseList(ArrayList<Course> courseList) {
-        StudentEnrolment.courseList = courseList;
+    public static void setCourse(Course course) {
+        StudentEnrolment.course = course;
     }
 
     public String getSemester() {
         return semester;
     }
 
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
 
     @Override
     public String toString() {
-        return "Student Enrolled!" + "\n" + studentList + ',' + courseList + ',' + semester + ".";
+        return "Student Enrolled!" + "\n" + student + ',' + course + ',' + semester + ".";
     }
 
     @Override
-    public void add(Student student, Course course, String semester) {
-        StudentEnrolment.addStudent(student);
-        StudentEnrolment.addCourse(course);
-        StudentEnrolment.setSemester(semester);
+    public void add(StudentEnrolment studentEnrolment) {
+        studentEnrolmentList.add(studentEnrolment);
     }
 
     @Override
-    public void update() {
-
-    }
-
-    @Override
-    public void delete() {
+    public void update(String studentID) {
 
     }
 
     @Override
-    public void getOne() {
+    public void delete(String studentID, String courseID) {
+
+    }
+
+    @Override
+    public void getOne(String studentID) {
 
     }
 
@@ -88,5 +70,3 @@ public class StudentEnrolment implements StudentEnrolmentManager {
 
     }
 }
-
-

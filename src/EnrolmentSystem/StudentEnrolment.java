@@ -8,7 +8,7 @@ public class StudentEnrolment implements StudentEnrolmentManager {
     private static Student student;
     private static Course course;
     private String semester;
-    private static final List<StudentEnrolment> studentEnrolmentList = new ArrayList<StudentEnrolment>();
+    protected static final List<StudentEnrolment> studentEnrolmentList = new ArrayList<StudentEnrolment>();
 
     public StudentEnrolment(Student student, Course course, String semester) {
     StudentEnrolment.student = student;
@@ -57,16 +57,40 @@ public class StudentEnrolment implements StudentEnrolmentManager {
 
     @Override
     public void delete(String studentID, String courseID) {
-
+        for (int i = 0; i < studentEnrolmentList.size(); i++) {
+            if(getStudent().getStudentID().equalsIgnoreCase(studentID)
+                    && getCourse().getCourseID().equalsIgnoreCase(courseID)) {
+                System.out.println(studentEnrolmentList.remove(i));
+                System.out.println("Enrolment Deleted!");
+            }
+        }
     }
 
     @Override
     public void getOne(String studentID) {
-
+        if (studentEnrolmentList.size() == 0) {
+            System.out.println("No enrolment found!");
+        } else {
+            for (StudentEnrolment studentEnrolment : studentEnrolmentList) {
+                String student = String.valueOf(getStudent().getStudentID());
+                if (student.equalsIgnoreCase(studentID)) {
+                    System.out.println(studentEnrolment.toString());
+                        }
+                    }
+                }
     }
 
     @Override
     public void getAll() {
-
+        if (studentEnrolmentList.size() == 0) {
+            System.out.println("No enrolment found!");
+        }
+        else {
+            for (StudentEnrolment studentEnrolment: studentEnrolmentList) {
+                System.out.println(studentEnrolment.toString());
+                }
+            }
     }
 }
+
+

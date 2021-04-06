@@ -2,7 +2,7 @@ package EnrolmentSystem;
 
 import java.util.Scanner;
 
-
+import static EnrolmentSystem.StudentEnrolment.*;
 
 public class Main {
 
@@ -51,73 +51,101 @@ public class Main {
                 // Choice input
                 choice = Integer.parseInt(input.nextLine());
 
-        switch (choice) {
-                case 1 -> {
-                        /* Enrolment Addition */
+                switch (choice) {
+                        case 1 -> {
+                                /* Enrolment Addition */
 
-                        // Student Selection
-                        System.out.println("Here are the student's list. Please enter the ID for enrolment: ");
-                        System.out.println(Student.getAllStudents());
-                        String selectedStudent = input.nextLine();
-                        Student student = Student.getStudentID(selectedStudent);
+                                // Student Selection
+                                System.out.println("Here are the student's list. Please enter the ID for enrolment: ");
+                                System.out.println(Student.getAllStudents());
+                                String selectedStudent = input.nextLine();
+                                Student student = Student.getStudentID(selectedStudent);
 
-                        // Course Selection
-                        System.out.println("Here are the course's list. Please enter the ID for enrolment :");
-                        System.out.println(Course.getAllCourses());
-                        String selectedCourse = input.nextLine();
-                        Course course = Course.getCourseID(selectedCourse);
+                                // Course Selection
+                                System.out.println("Here are the course's list. Please enter the ID for enrolment :");
+                                System.out.println(Course.getAllCourses());
+                                String selectedCourse = input.nextLine();
+                                Course course = Course.getCourseID(selectedCourse);
 
-                        // Semester Assignment
-                        System.out.println("Please enter the semester: ");
-                        String semester = input.nextLine();
+                                // Semester Assignment
+                                System.out.println("Please enter the semester: ");
+                                String semester = input.nextLine();
 
-                        // Create new Enrolment object
-                        StudentEnrolment studentEnrolment = new StudentEnrolment(student, course, semester);
-                        StudentEnrolmentManager SEmanager; // Create object for interface.
-                        SEmanager = studentEnrolment;
-                        SEmanager.add(studentEnrolment); // Let interface add the enrolment.
-                        System.out.println("Student Enrolled!" + studentEnrolment);
-                }
-                case 2 -> {
-                        System.out.println("Enter student ID:");
-                        String studentID = input.nextLine();
+                                // Create new Enrolment object
+                                StudentEnrolment studentEnrolment = new StudentEnrolment(student, course, semester);
+                                StudentEnrolmentManager seManager; // Create object for interface.
+                                seManager = studentEnrolment;
+                                seManager.add(studentEnrolment); // Let interface add the enrolment.
+                                System.out.println("Student Enrolled!" + studentEnrolment);
+                        }
+                        case 2 -> {
+                                System.out.println("Enter student ID:");
+                                String studentID = input.nextLine();
+                                        if (studentEnrolmentList.contains(null)) {
+                                                System.out.println("There is no enrollment record.");
+                                                for (StudentEnrolment studentEnrolment : studentEnrolmentList) {
+                                                        String student = String.valueOf(getStudent().getStudentID());
+                                                        if (student.equalsIgnoreCase(studentID)) {
+                                                                System.out.println(studentEnrolment.toString());
+                                                        }
 
-                        do {
-                                System.out.println("Do you want to add or delete courses?");
-                                System.out.println("1. Add course");
-                                System.out.println("2. Delete course");
-                                System.out.println("3. Exit to main menu");
+                                                        System.out.println("Do you want to add or delete courses?");
+                                                        System.out.println("1. Add course");
+                                                        System.out.println("2. Delete course");
+                                                        System.out.println("3. Exit to main menu");
 
-                                choice = Integer.parseInt(input.nextLine());
+                                                        choice = Integer.parseInt(input.nextLine());
 
-                                switch (choice) {
-                                        case 1 -> {
-                                                break;
+                                                        while (true){
+                                                                switch (choice){
+                                                                case 1 -> {
+                                                                        Student newStudent = Student.getStudentID(studentID);
+                                                                        System.out.println("Here are the course's list. Please enter the ID for enrolment :");
+                                                                        System.out.println(Course.getAllCourses());
+                                                                        String selectedCourse = input.nextLine();
+                                                                        Course course = Course.getCourseID(selectedCourse);
+                                                                        System.out.println("Please enter the semester: ");
+                                                                        String semester = input.nextLine();
+
+                                                                        StudentEnrolment newStudentEnrolment = new StudentEnrolment(newStudent, course, semester);
+                                                                        StudentEnrolmentManager seManager; // Create object for interface.
+                                                                        seManager = newStudentEnrolment;
+                                                                        seManager.add(newStudentEnrolment); // Let interface add the enrolment.
+                                                                        System.out.println("Student Enrolled!" + newStudentEnrolment);
+
+                                                                }
+                                                                case 2 -> {
+                                                                        break;
+                                                                }
+
+                                                                case 3 -> {
+                                                                        return;
+                                                                }
+                                                                default -> {
+                                                                        // In case wrong input
+                                                                        System.out.println("Wrong Number! Now we will redirect to the Main Menu");
+                                                                }
+                                                }
                                         }
 
-                                case 2 -> { }
-
-                                case 3 -> { }
-
                                 }
+                        }
+                        }
 
-                        } while (choice != 3);
-                }
+                        case 3 -> {
+                        }
 
-                case 3 -> {
-                }
+                        case 4 -> {
+                                // System Exit
+                                System.out.println("Now Exit...");
+                                System.exit(0);
+                        }
+                        default -> {
+                                // In case wrong input
+                                System.out.println("Wrong Number! Now we will redirect to the Main Menu");
+                        }
 
-                case 4 -> {
-                        // System Exit
-                        System.out.println("Now Exit...");
-                        System.exit(0);
-                }
-                default -> {
-                        // In case wrong input
-                        System.out.println("Wrong Number! Now we will redirect to the Main Menu");
                 }
         }
-
-}
-}
+        }
 }

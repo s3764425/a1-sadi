@@ -16,6 +16,7 @@ public class StudentEnrolment implements StudentEnrolmentManager {
     this.semester = semester;
     }
 
+    /* Getters and Setters */
     public static Student getStudent(){
         return student;
     }
@@ -40,6 +41,47 @@ public class StudentEnrolment implements StudentEnrolmentManager {
         this.semester = semester;
     }
 
+    /* Functions without interface */
+    public static void getEnrolment(String studentID) {
+        if (studentEnrolmentList.size() == 0) {
+            System.out.println("No enrolment found!");
+        }
+        else {
+            for (StudentEnrolment studentEnrolment: studentEnrolmentList) {
+                String student = String.valueOf(getStudent().getStudentID());
+                if(student.equalsIgnoreCase(studentID)) {
+                    System.out.println(studentEnrolment.toString());
+                }
+            }
+        }
+    }
+    public void getAllCoursesForStudentInSemester(String studentId, String semester) {
+        for (StudentEnrolment studentEnrolment : studentEnrolmentList) {
+            if (getStudent().getStudentID().equalsIgnoreCase(studentId)
+                    && studentEnrolment.getSemester().equalsIgnoreCase(semester)) {
+                System.out.println(getCourse().getCourseName());
+            }
+        }
+    }
+
+    public void getAllStudentsInCourseInSemester(String courseID, String semester) {
+        for (StudentEnrolment studentEnrolment : studentEnrolmentList) {
+            if (getCourse().getCourseID().equalsIgnoreCase(courseID)
+                    && studentEnrolment.getSemester().equalsIgnoreCase(semester)) {
+                System.out.println(getStudent().getStudentName());
+            }
+        }
+    }
+
+    public void getAllCoursesInSemester(String semester) {
+        for(StudentEnrolment studentEnrolment: studentEnrolmentList) {
+            if (studentEnrolment.getSemester().equalsIgnoreCase(semester)) {
+                System.out.println(getCourse().getCourseName());
+            }
+        }
+    }
+
+    /* Get Enrolment to String */
     @Override
     public String toString() {
         return "\n" + student + ',' + course + ',' + semester + ".";

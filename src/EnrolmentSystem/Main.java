@@ -19,17 +19,6 @@ public class Main {
                 courseList.addCourse(c1);
                 courseList.addCourse(c2);
 
-                StudentEnrolment studentEnrolment1 = new StudentEnrolment(s1, c1, "2021A");
-                StudentEnrolment studentEnrolment2 = new StudentEnrolment(s2, c1, "2021A");
-                StudentEnrolment studentEnrolment3 = new StudentEnrolment(s1, c2, "2021A");
-                StudentEnrolment studentEnrolment4 = new StudentEnrolment(s2, c2, "2021A");
-
-                StudentEnrolmentList enrolmentList = new StudentEnrolmentList();
-                enrolmentList.add(studentEnrolment1);
-                enrolmentList.add(studentEnrolment2);
-                enrolmentList.add(studentEnrolment3);
-                enrolmentList.add(studentEnrolment4);
-
                 Menu menu = new Menu();
                 menu.process();
         }
@@ -79,7 +68,7 @@ public class Main {
 
                                         // Create new Enrolment object
                                         enrolmentList.add(studentEnrolment);
-                                        System.out.println(studentEnrolment.toString());
+                                        System.out.println("Student Enrolled!: " + studentEnrolment.toString());
                                         mainMenu();
                                         choice = Integer.parseInt(input.nextLine());
                                 }

@@ -44,7 +44,7 @@ public class StudentEnrolment{
 
     @Override
     public String toString() {
-        return "Student Enrolled!: " + student + ", " + course + ", " + semester + '.';
+        return student + ", " + course + ", " + semester + '.';
     }
 }
 
@@ -118,6 +118,7 @@ class StudentEnrolmentList implements StudentEnrolmentManager {
                 if (student.equalsIgnoreCase(studentID))
                     System.out.println(studentEnrolment.toString());
             }
+
             System.out.println("No enrolment found!");
         }
     }

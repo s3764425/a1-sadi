@@ -1,6 +1,7 @@
 package EnrolmentSystem;
 
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -43,7 +44,7 @@ public class StudentEnrolment{
 
     @Override
     public String toString() {
-        return "Student Enrolled!:" + student + ", " + course + ", " + semester + '.';
+        return "Student Enrolled!: " + student + ", " + course + ", " + semester + '.';
     }
 }
 
@@ -84,14 +85,14 @@ class StudentEnrolmentList implements StudentEnrolmentManager {
     @Override
     public void update(String studentID) {
         if (studentEnrolmentList.size() == 0) {
-            System.out.println("There is currently 0 enrollment record.");
+            System.out.println("No enrolment found!");
         }
         else {
             for (StudentEnrolment studentEnrolmentList: studentEnrolmentList) {
                 String student = String.valueOf(studentEnrolmentList.getStudent().getStudentID());
-                System.out.println("Enter Course Id to change");
-                Scanner scanner = new Scanner(System.in);
-                String mySelectCourseId = scanner.nextLine();
+                System.out.println("Enter ID to modify:");
+                Scanner input = new Scanner(System.in);
+                String newCourseId = input.nextLine();
             }
         }
 
@@ -103,6 +104,7 @@ class StudentEnrolmentList implements StudentEnrolmentManager {
             if(studentEnrolmentList.get(i).getStudent().getStudentID().equalsIgnoreCase(studentID)
                     && studentEnrolmentList.get(i).getCourse().getCourseID().equalsIgnoreCase(courseID)) {
                 System.out.println(studentEnrolmentList.remove(i));
+                System.out.println("Enrolment deleted!");
             }
 
         }
@@ -110,24 +112,19 @@ class StudentEnrolmentList implements StudentEnrolmentManager {
 
     @Override
     public void getOne(String studentID) {
-        if (studentEnrolmentList.size() == 0) {
-            System.out.println("There is no enrollment record.");
-        }
-        else {
-            for (StudentEnrolment studentEnrolment: studentEnrolmentList) {
+        if (studentEnrolmentList.size() != 0) {
+            for (StudentEnrolment studentEnrolment : studentEnrolmentList) {
                 String student = String.valueOf(studentEnrolment.getStudent().getStudentID());
-                if(student.equalsIgnoreCase(studentID)) {
+                if (student.equalsIgnoreCase(studentID))
                     System.out.println(studentEnrolment.toString());
-                }
             }
+            System.out.println("No enrolment found!");
         }
-
     }
-
     @Override
     public void getAll() {
         if (studentEnrolmentList.size() == 0) {
-            System.out.println("There is no enrollment record.");
+            System.out.println("No enrolment found!");
         }
         else {
             for (StudentEnrolment studentEnrolment: studentEnrolmentList) {

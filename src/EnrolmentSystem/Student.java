@@ -63,7 +63,7 @@ public class Student {
         public Object getAllStudents() {
             ArrayList<String> students = new ArrayList<>();
             for(Student student: studentList) {
-                students.add("StudentId: " + student.getStudentID() + " " + "StudentName: " + student.getStudentName());
+                students.add("ID: " + student.getStudentID() + " " + "Name: " + student.getStudentName());
             }
             return students;
         }

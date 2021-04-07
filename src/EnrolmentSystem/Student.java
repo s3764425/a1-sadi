@@ -51,7 +51,7 @@ public class Student {
             studentList.add(student);
         }
 
-        public Student getStudentId(String name) {
+        public Student getStudentID(String name) {
             for(Student student: studentList) {
                 if(student.getStudentID().equalsIgnoreCase(name)) {
                     return student;

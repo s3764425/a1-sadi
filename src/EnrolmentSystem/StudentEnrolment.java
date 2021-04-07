@@ -3,12 +3,12 @@ package EnrolmentSystem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-public class StudentEnrolment implements StudentEnrolmentManager {
+public class StudentEnrolment{
     private Student student;
     private Course course;
     private String semester;
-    protected static final List<StudentEnrolment> studentEnrolmentList = new ArrayList<StudentEnrolment>();
 
     public StudentEnrolment(Student student, Course course, String semester) {
         this.student = student;
@@ -41,50 +41,39 @@ public class StudentEnrolment implements StudentEnrolmentManager {
         this.semester = semester;
     }
 
-    /* Functions without interface */
-    public void getEnrolment(String studentID) {
-        if (studentEnrolmentList.size() == 0) {
-            System.out.println("No enrolment found!");
-        }
-        else {
-            for (StudentEnrolment studentEnrolment: studentEnrolmentList) {
-                String student = String.valueOf(getStudent().getStudentID());
-                if(student.equalsIgnoreCase(studentID)) {
-                    System.out.println(studentEnrolment.toString());
-                }
-            }
-        }
-    }
-    public void getAllCoursesForStudentInSemester(String studentId, String semester) {
-        for (StudentEnrolment studentEnrolment : studentEnrolmentList) {
-            if (getStudent().getStudentID().equalsIgnoreCase(studentId)
-                    && studentEnrolment.getSemester().equalsIgnoreCase(semester)) {
-                System.out.println(getCourse().getCourseName());
-            }
-        }
-    }
-
-    public void getAllStudentsInCourseInSemester(String courseID, String semester) {
-        for (StudentEnrolment studentEnrolment : studentEnrolmentList) {
-            if (getCourse().getCourseID().equalsIgnoreCase(courseID)
-                    && studentEnrolment.getSemester().equalsIgnoreCase(semester)) {
-                System.out.println(getStudent().getStudentName());
-            }
-        }
-    }
-
-    public void getAllCoursesInSemester(String semester) {
-        for(StudentEnrolment studentEnrolment: studentEnrolmentList) {
-            if (studentEnrolment.getSemester().equalsIgnoreCase(semester)) {
-                System.out.println(getCourse().getCourseName());
-            }
-        }
-    }
-
-    /* Get Enrolment to String */
     @Override
     public String toString() {
-        return "\n" + student + ',' + course + ',' + semester + ".";
+        return "Student Enrolled!:" + student + ", " + course + ", " + semester + '.';
+    }
+}
+
+class StudentEnrolmentList implements StudentEnrolmentManager {
+    private static final List<StudentEnrolment> studentEnrolmentList = new ArrayList<StudentEnrolment>();
+
+    public void printAllCoursesForStudentInSemester(String studentId, String semester) {
+        for (StudentEnrolment studentEnrolmentList : studentEnrolmentList) {
+            if (studentEnrolmentList.getStudent().getStudentID().equalsIgnoreCase(studentId)
+                    && studentEnrolmentList.getSemester().equalsIgnoreCase(semester)) {
+                System.out.println(studentEnrolmentList.getCourse().getCourseName());
+            }
+        }
+    }
+
+    public void printAllStudentsInCourseInSemester(String courseId, String semester) {
+        for (StudentEnrolment studentEnrolmentList : studentEnrolmentList) {
+            if (studentEnrolmentList.getCourse().getCourseID().equalsIgnoreCase(courseId)
+                    && studentEnrolmentList.getSemester().equalsIgnoreCase(semester)) {
+                System.out.println(studentEnrolmentList.getStudent().getStudentName());
+            }
+        }
+    }
+
+    public void printAllCoursesInSemester(String semester) {
+        for(StudentEnrolment studentEnrolmentList: studentEnrolmentList) {
+            if (studentEnrolmentList.getSemester().equalsIgnoreCase(semester)) {
+                System.out.println(studentEnrolmentList.getCourse().getCourseName());
+            }
+        }
     }
 
     @Override
@@ -94,45 +83,59 @@ public class StudentEnrolment implements StudentEnrolmentManager {
 
     @Override
     public void update(String studentID) {
+        if (studentEnrolmentList.size() == 0) {
+            System.out.println("There is currently 0 enrollment record.");
+        }
+        else {
+            for (StudentEnrolment studentEnrolmentList: studentEnrolmentList) {
+                String student = String.valueOf(studentEnrolmentList.getStudent().getStudentID());
+                System.out.println("Enter Course Id to change");
+                Scanner scanner = new Scanner(System.in);
+                String mySelectCourseId = scanner.nextLine();
+            }
+        }
 
     }
 
     @Override
     public void delete(String studentID, String courseID) {
         for (int i = 0; i < studentEnrolmentList.size(); i++) {
-            if(getStudent().getStudentID().equalsIgnoreCase(studentID)
-                    && getCourse().getCourseID().equalsIgnoreCase(courseID)) {
+            if(studentEnrolmentList.get(i).getStudent().getStudentID().equalsIgnoreCase(studentID)
+                    && studentEnrolmentList.get(i).getCourse().getCourseID().equalsIgnoreCase(courseID)) {
                 System.out.println(studentEnrolmentList.remove(i));
-                System.out.println("Enrolment Deleted!");
             }
+
         }
     }
 
     @Override
     public void getOne(String studentID) {
         if (studentEnrolmentList.size() == 0) {
-            System.out.println("No enrolment found!");
-        } else {
-            for (StudentEnrolment studentEnrolment : studentEnrolmentList) {
-                String student = String.valueOf(getStudent().getStudentID());
-                if (student.equalsIgnoreCase(studentID)) {
+            System.out.println("There is no enrollment record.");
+        }
+        else {
+            for (StudentEnrolment studentEnrolment: studentEnrolmentList) {
+                String student = String.valueOf(studentEnrolment.getStudent().getStudentID());
+                if(student.equalsIgnoreCase(studentID)) {
                     System.out.println(studentEnrolment.toString());
-                        }
-                    }
                 }
+            }
+        }
+
     }
 
     @Override
     public void getAll() {
         if (studentEnrolmentList.size() == 0) {
-            System.out.println("No enrolment found!");
+            System.out.println("There is no enrollment record.");
         }
         else {
             for (StudentEnrolment studentEnrolment: studentEnrolmentList) {
                 System.out.println(studentEnrolment.toString());
-                }
             }
+        }
     }
-}
+
+    }
 
 

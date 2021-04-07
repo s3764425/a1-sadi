@@ -7,10 +7,14 @@ import static EnrolmentSystem.StudentEnrolment.*;
 public class Main {
 
         public static void main(String[] args) {
+
+                StudentList studentList = new StudentList();
+                CourseList courseList = new CourseList();
+
                 Student s1 = new Student("s3764425", "Tran Trong Vy", "13/11/2000");
                 Student s2 = new Student("s3653314", "Travis Tran", "12/10/1999");
-                Student.addStudent(s1);
-                Student.addStudent(s2);
+                studentList.addStudent(s1);
+                studentList.addStudent(s2);
 
                 Course c1 = new Course("COSC2041","C++ Programming", 12);
                 Course c2 = new Course("COSC2021","Introduction to Cloud", 12);
@@ -57,7 +61,7 @@ public class Main {
 
                                 // Student Selection
                                 System.out.println("Here are the student's list. Please enter the ID for enrolment: ");
-                                System.out.println(Student.getAllStudents());
+                                System.out.println(studentList.getAllStudents());
                                 String selectedStudent = input.nextLine();
                                 Student student = Student.getStudentID(selectedStudent);
 
@@ -81,8 +85,9 @@ public class Main {
                         }
 
                         case 2 -> { String studentID = input.nextLine();
-                                StudentEnrolment.getEnrolment(studentID);
-                                return;
+                                StudentEnrolment studentEnrolment = new StudentEnrolment();
+                                studentEnrolment.getEnrolment(studentID);
+
                         }
                         case 3 -> { }
 

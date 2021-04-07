@@ -5,32 +5,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentEnrolment implements StudentEnrolmentManager {
-    private static Student student;
-    private static Course course;
+    private Student student;
+    private Course course;
     private String semester;
     protected static final List<StudentEnrolment> studentEnrolmentList = new ArrayList<StudentEnrolment>();
 
     public StudentEnrolment(Student student, Course course, String semester) {
-    StudentEnrolment.student = student;
-    StudentEnrolment.course = course;
-    this.semester = semester;
+        this.student = student;
+        this.course = course;
+        this.semester = semester;
     }
 
     /* Getters and Setters */
-    public static Student getStudent(){
+    public Student getStudent(){
         return student;
     }
 
-    public static void setStudent(Student student) {
-        StudentEnrolment.student = student;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
-    public static Course getCourse() {
+    public Course getCourse() {
         return course;
     }
 
-    public static void setCourse(Course course) {
-        StudentEnrolment.course = course;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     public String getSemester() {
@@ -42,7 +42,7 @@ public class StudentEnrolment implements StudentEnrolmentManager {
     }
 
     /* Functions without interface */
-    public static void getEnrolment(String studentID) {
+    public void getEnrolment(String studentID) {
         if (studentEnrolmentList.size() == 0) {
             System.out.println("No enrolment found!");
         }

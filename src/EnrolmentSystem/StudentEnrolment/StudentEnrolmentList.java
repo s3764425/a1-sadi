@@ -1,54 +1,10 @@
-package EnrolmentSystem;
+package EnrolmentSystem.StudentEnrolment;
 
-
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class StudentEnrolment{
-    private Student student;
-    private Course course;
-    private String semester;
-
-    public StudentEnrolment(Student student, Course course, String semester) {
-        this.student = student;
-        this.course = course;
-        this.semester = semester;
-    }
-
-    /* Getters and Setters */
-    public Student getStudent(){
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
-    public String getSemester() {
-        return semester;
-    }
-
-    public void setSemester(String semester) {
-        this.semester = semester;
-    }
-
-    @Override
-    public String toString() {
-        return student + ", " + course + ", " + semester + '.';
-    }
-}
-
-class StudentEnrolmentList implements StudentEnrolmentManager {
+public class StudentEnrolmentList implements StudentEnrolmentManager {
     private static final List<StudentEnrolment> studentEnrolmentList = new ArrayList<StudentEnrolment>();
 
     public void printAllCoursesForStudentInSemester(String studentId, String semester) {
@@ -58,7 +14,7 @@ class StudentEnrolmentList implements StudentEnrolmentManager {
                 System.out.println(studentEnrolmentList.getCourse().getCourseName());
             }
             else
-            System.out.println("No enrolment found!");
+                System.out.println("No enrolment found!");
         }
     }
 
@@ -69,7 +25,7 @@ class StudentEnrolmentList implements StudentEnrolmentManager {
                 System.out.println(studentEnrolmentList.getStudent().getStudentName());
             }
             else
-            System.out.println("No enrolment found!");
+                System.out.println("No enrolment found!");
         }
     }
 
@@ -79,7 +35,7 @@ class StudentEnrolmentList implements StudentEnrolmentManager {
                 System.out.println(studentEnrolmentList.getCourse().getCourseName());
             }
             else
-            System.out.println("No enrolment found!");
+                System.out.println("No enrolment found!");
         }
     }
 
@@ -93,15 +49,14 @@ class StudentEnrolmentList implements StudentEnrolmentManager {
         if (studentEnrolmentList.size() == 0) {
             System.out.println("No enrolment found!");
         }
-        else {
-            for (StudentEnrolment studentEnrolmentList: studentEnrolmentList) {
-                String student = String.valueOf(studentEnrolmentList.getStudent().getStudentID());
-                System.out.println("Enter ID to modify:");
-                Scanner input = new Scanner(System.in);
-                String newCourseId = input.nextLine();
-            }
+        System.out.println("Enter student ID for modify");
+        Scanner input = new Scanner(System.in);
+        String selectedStudent = input.nextLine();
+        for (StudentEnrolment studentEnrolmentList: studentEnrolmentList) {
+            String student = String.valueOf(studentEnrolmentList.getStudent().getStudentID());
+            System.out.println("Enter ID to modify:");
+            String newCourseId = input.nextLine();
         }
-
     }
 
     @Override
@@ -139,6 +94,6 @@ class StudentEnrolmentList implements StudentEnrolmentManager {
         }
     }
 
-    }
+}
 
 

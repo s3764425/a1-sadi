@@ -30,10 +30,12 @@ public class Main {
         public void mainMenu(){
                 System.out.println("Welcome to the Enrolment System. Please type in the number:");
                 System.out.println("1. Add Enrolment.");
-                System.out.println("2. List One Enrolment.");
-                System.out.println("3. List All Enrolment.");
-                System.out.println("4. Print Enrolments.");
-                System.out.println("5. Exit Student.");
+                System.out.println("2. Update Enrolment.");
+                System.out.println("3. Delete Enrolment.");
+                System.out.println("4. List One Enrolment.");
+                System.out.println("5. List All Enrolment.");
+                System.out.println("6. Print Enrolments.");
+                System.out.println("7. Exit Student.");
                 System.out.println("Enter your choice:");
         }
 
@@ -72,8 +74,21 @@ public class Main {
                                         mainMenu();
                                         choice = Integer.parseInt(input.nextLine());
                                 }
-
                                 case 2 -> {
+
+                                }
+
+                                case 3 -> {
+                                        System.out.println("Please enter the student ID for delete: ");
+                                        String studentID = input.nextLine();
+                                        System.out.println("Please enter the course ID for delete: ");
+                                        String courseID = input.nextLine();
+                                        enrolmentList.delete(studentID, courseID);
+                                        mainMenu();
+                                        choice = Integer.parseInt(input.nextLine());
+                                }
+
+                                case 4 -> {
                                         System.out.println("Please enter the student's ID: ");
                                         String studentID = input.nextLine();
                                         enrolmentList.getOne(studentID);
@@ -81,40 +96,57 @@ public class Main {
                                         choice = Integer.parseInt(input.nextLine());
                                 }
 
-                                case 3 -> {
+                                case 5 -> {enrolmentList.getAll();
+
+                                }
+
+                                case 6 -> {
                                         System.out.println("Please select an option below:");
-                                        System.out.println("1. Print all courses for 1 student in 1 semester");
-                                        System.out.println("2. Print all students of 1 course in 1 semester");
-                                        System.out.println("3. Prints all courses offered in 1 semester");
-                                        System.out.println("4. Exit to main menu");
+                                        System.out.println("2. Print all courses for 1 student in 1 semester.");
+                                        System.out.println("3. Print all students of 1 course in 1 semester.");
+                                        System.out.println("4. Prints all courses offered in 1 semester.");
+                                        System.out.println("5. Exit to main menu.");
                                         choice = Integer.parseInt(input.nextLine());
-                                        while (choice != 4) {
+                                        while (choice != 5) {
                                                 switch (choice) {
-                                                        case 1 -> {
+
+                                                        case 2 -> {
                                                                 System.out.println("Please enter the student name:");
                                                                 String selectedStudent = input.nextLine();
                                                                 System.out.println("Please enter the semester:");
                                                                 String semester = input.nextLine();
                                                                 enrolmentList.printAllCoursesForStudentInSemester(selectedStudent, semester);
+                                                                System.out.println("Done, now you will be redirecting to main menu!");
+
+                                                                mainMenu();
+                                                                choice = Integer.parseInt(input.nextLine());
                                                         }
 
-                                                        case 2 -> {
+                                                        case 3 -> {
                                                                 System.out.println("Please enter the student name:");
                                                                 String selectedCourse = input.nextLine();
                                                                 System.out.println("Please enter the semester:");
                                                                 String semester = input.nextLine();
                                                                 enrolmentList.printAllStudentsInCourseInSemester(selectedCourse, semester);
+                                                                System.out.println("Done, now you will be redirecting to main menu!");
+
+                                                                mainMenu();
+                                                                choice = Integer.parseInt(input.nextLine());
                                                         }
 
-                                                        case 3 -> {
+                                                        case 4 -> {
                                                                 System.out.println("Please enter the semester:");
                                                                 String semester = input.nextLine();
                                                                 enrolmentList.printAllCoursesInSemester(semester);
+                                                                System.out.println("Done, now you will be redirecting to main menu!");
+
+                                                                mainMenu();
+                                                                choice = Integer.parseInt(input.nextLine());
                                                         }
                                                 }
                                         }
                                 }
-                                case 4 -> {
+                                case 7 -> {
                                         // System Exit
                                         System.out.println("Now Exit...");
                                         System.exit(0);

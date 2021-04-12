@@ -57,6 +57,7 @@ class StudentEnrolmentList implements StudentEnrolmentManager {
                     && studentEnrolmentList.getSemester().equalsIgnoreCase(semester)) {
                 System.out.println(studentEnrolmentList.getCourse().getCourseName());
             }
+            else
             System.out.println("No enrolment found!");
         }
     }
@@ -67,6 +68,7 @@ class StudentEnrolmentList implements StudentEnrolmentManager {
                     && studentEnrolmentList.getSemester().equalsIgnoreCase(semester)) {
                 System.out.println(studentEnrolmentList.getStudent().getStudentName());
             }
+            else
             System.out.println("No enrolment found!");
         }
     }
@@ -76,6 +78,7 @@ class StudentEnrolmentList implements StudentEnrolmentManager {
             if (studentEnrolmentList.getSemester().equalsIgnoreCase(semester)) {
                 System.out.println(studentEnrolmentList.getCourse().getCourseName());
             }
+            else
             System.out.println("No enrolment found!");
         }
     }
@@ -121,7 +124,6 @@ class StudentEnrolmentList implements StudentEnrolmentManager {
                 if (student.equalsIgnoreCase(studentID))
                     System.out.println(studentEnrolment.toString());
             }
-
             System.out.println("No enrolment found!");
         }
     }

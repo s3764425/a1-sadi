@@ -37,7 +37,7 @@ public class Main {
                 System.out.println("Enter your choice:");
         }
 
-        public void process(){
+        public void process() {
                 Scanner input = new Scanner(System.in);
                 mainMenu();
                 boolean loop = true;
@@ -45,7 +45,7 @@ public class Main {
 
                 choice = Integer.parseInt(input.nextLine());
 
-                while(true) {
+                while (true) {
                         switch (choice) {
                                 case 1 -> {
                                         /* Enrolment Addition */
@@ -73,15 +73,47 @@ public class Main {
                                         choice = Integer.parseInt(input.nextLine());
                                 }
 
-                                case 2 -> {System.out.println("Please enter the student's ID: ");
+                                case 2 -> {
+                                        System.out.println("Please enter the student's ID: ");
                                         String studentID = input.nextLine();
                                         enrolmentList.getOne(studentID);
                                         mainMenu();
                                         choice = Integer.parseInt(input.nextLine());
+                                }
+
+                                case 3 -> {
+                                        System.out.println("Please select an option below:");
+                                        System.out.println("1. Print all courses for 1 student in 1 semester");
+                                        System.out.println("2. Print all students of 1 course in 1 semester");
+                                        System.out.println("3. Prints all courses offered in 1 semester");
+                                        System.out.println("4. Exit to main menu");
+                                        choice = Integer.parseInt(input.nextLine());
+                                        while (choice != 4) {
+                                                switch (choice) {
+                                                        case 1 -> {
+                                                                System.out.println("Please enter the student name:");
+                                                                String selectedStudent = input.nextLine();
+                                                                System.out.println("Please enter the semester:");
+                                                                String semester = input.nextLine();
+                                                                enrolmentList.printAllCoursesForStudentInSemester(selectedStudent, semester);
+                                                        }
+
+                                                        case 2 -> {
+                                                                System.out.println("Please enter the student name:");
+                                                                String selectedCourse = input.nextLine();
+                                                                System.out.println("Please enter the semester:");
+                                                                String semester = input.nextLine();
+                                                                enrolmentList.printAllStudentsInCourseInSemester(selectedCourse, semester);
+                                                        }
+
+                                                        case 3 -> {
+                                                                System.out.println("Please enter the semester:");
+                                                                String semester = input.nextLine();
+                                                                enrolmentList.printAllCoursesInSemester(semester);
+                                                        }
+                                                }
                                         }
-
-                                case 3 -> { }
-
+                                }
                                 case 4 -> {
                                         // System Exit
                                         System.out.println("Now Exit...");
@@ -93,9 +125,9 @@ public class Main {
                                         mainMenu();
                                         choice = Integer.parseInt(input.nextLine());
                                 }
-
                         }
                 }
         }
+        }
 }
-}
+

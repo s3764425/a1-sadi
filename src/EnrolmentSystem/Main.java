@@ -45,6 +45,7 @@ public class Main {
         CourseList courseList = new CourseList();
 
         public void mainMenu(){
+                /* Main Menu */
                 System.out.println("Welcome to the Enrolment System. Please type in the number:");
                 System.out.println("1. Add Enrolment.");
                 System.out.println("2. Update Enrolment.");
@@ -57,6 +58,7 @@ public class Main {
         }
 
         public void process() {
+                // Menu Processor
                 Scanner input = new Scanner(System.in);
                 mainMenu();
                 boolean loop = true;
@@ -93,12 +95,14 @@ public class Main {
                                         choice = Integer.parseInt(input.nextLine());
                                 }
                                 case 2 -> {
-                                        System.out.println("Please enter the student ID for delete: ");
+                                        /* Enrolment Update */
+                                        System.out.println("Please enter the student ID to update: ");
                                         String studentID = input.nextLine();
                                         enrolmentList.update(studentID);
                                 }
 
                                 case 3 -> {
+                                        /* Enrolment Deletion */
                                         System.out.println("Please enter the student ID for delete: ");
                                         String studentID = input.nextLine();
                                         System.out.println("Please enter the course ID for delete: ");
@@ -109,6 +113,7 @@ public class Main {
                                 }
 
                                 case 4 -> {
+                                        /* Get One Enrolment */
                                         System.out.println("Please enter the student's ID: ");
                                         String studentID = input.nextLine();
                                         enrolmentList.getOne(studentID);
@@ -117,12 +122,14 @@ public class Main {
                                 }
 
                                 case 5 -> {
+                                        /* Get All Enrolments */
                                         System.out.println("Getting all enrolments...");
                                         enrolmentList.getAll();
 
                                 }
 
                                 case 6 -> {
+                                        /* Enrolment Printer & Its Option */
                                         System.out.println("Please select an option below:");
                                         System.out.println("1. Print all courses for 1 student in 1 semester.");
                                         System.out.println("2. Print all students of 1 course in 1 semester.");

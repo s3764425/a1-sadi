@@ -7,11 +7,17 @@ import EnrolmentSystem.Student.StudentList;
 import EnrolmentSystem.StudentEnrolment.StudentEnrolment;
 import EnrolmentSystem.StudentEnrolment.StudentEnrolmentList;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
         public static void main(String[] args) {
 
+                //
+                CSV.readStudentsFromCSV();
+                CSV.readCoursesFromCSV();
+
+                // Extra Data
                 Student s1 = new Student("s3764425", "Tran Trong Vy", "13/11/2000");
                 Student s2 = new Student("s3653314", "Travis Tran", "12/10/1999");
 

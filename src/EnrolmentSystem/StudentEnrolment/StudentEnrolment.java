@@ -3,6 +3,9 @@ package EnrolmentSystem.StudentEnrolment;
 import EnrolmentSystem.Course.Course;
 import EnrolmentSystem.Student.Student;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StudentEnrolment{
     private Student student;
     private Course course;

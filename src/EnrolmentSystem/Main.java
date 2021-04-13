@@ -13,10 +13,12 @@ import java.util.Scanner;
 public class Main {
         public static void main(String[] args) {
 
-                //
+                /* Student Data */
+                // Default.csv Data
                 CSV.readStudentsFromCSV();
-                CSV.readCoursesFromCSV();
 
+
+                /* Course Data */
                 // Extra Data
                 Student s1 = new Student("s3764425", "Tran Trong Vy", "13/11/2000");
                 Student s2 = new Student("s3653314", "Travis Tran", "12/10/1999");
@@ -24,6 +26,8 @@ public class Main {
                 StudentList studentList = new StudentList();
                 studentList.addStudent(s1);
                 studentList.addStudent(s2);
+
+                CSV.readCoursesFromCSV();
 
                 Course c1 = new Course("COSC2041", "C++ Programming", 12);
                 Course c2 = new Course("COSC2021", "Introduction to Cloud", 12);
@@ -78,6 +82,7 @@ public class Main {
 
                                         // Semester Assignment
                                         System.out.println("Please enter the semester: ");
+                                        System.out.println(CSV.readSemestersFromCSV().toString());
                                         String semester = input.nextLine();
                                         StudentEnrolment studentEnrolment = new StudentEnrolment(student, course, semester);
 
@@ -88,7 +93,9 @@ public class Main {
                                         choice = Integer.parseInt(input.nextLine());
                                 }
                                 case 2 -> {
-
+                                        System.out.println("Please enter the student ID for delete: ");
+                                        String studentID = input.nextLine();
+                                        enrolmentList.update(studentID);
                                 }
 
                                 case 3 -> {
@@ -109,21 +116,22 @@ public class Main {
                                         choice = Integer.parseInt(input.nextLine());
                                 }
 
-                                case 5 -> {enrolmentList.getAll();
+                                case 5 -> {
+                                        System.out.println("Getting all enrolments...");
+                                        enrolmentList.getAll();
 
                                 }
 
                                 case 6 -> {
                                         System.out.println("Please select an option below:");
-                                        System.out.println("2. Print all courses for 1 student in 1 semester.");
-                                        System.out.println("3. Print all students of 1 course in 1 semester.");
-                                        System.out.println("4. Prints all courses offered in 1 semester.");
-                                        System.out.println("5. Exit to main menu.");
+                                        System.out.println("1. Print all courses for 1 student in 1 semester.");
+                                        System.out.println("2. Print all students of 1 course in 1 semester.");
+                                        System.out.println("3. Prints all courses offered in 1 semester.");
+                                        System.out.println("4. Exit to main menu.");
                                         choice = Integer.parseInt(input.nextLine());
-                                        while (choice != 5) {
+                                        while (choice != 4) {
                                                 switch (choice) {
-
-                                                        case 2 -> {
+                                                        case 1 -> {
                                                                 System.out.println("Please enter the student name:");
                                                                 String selectedStudent = input.nextLine();
                                                                 System.out.println("Please enter the semester:");
@@ -135,7 +143,7 @@ public class Main {
                                                                 choice = Integer.parseInt(input.nextLine());
                                                         }
 
-                                                        case 3 -> {
+                                                        case 2 -> {
                                                                 System.out.println("Please enter the student name:");
                                                                 String selectedCourse = input.nextLine();
                                                                 System.out.println("Please enter the semester:");
@@ -147,12 +155,12 @@ public class Main {
                                                                 choice = Integer.parseInt(input.nextLine());
                                                         }
 
-                                                        case 4 -> {
+                                                        case 3 -> {
                                                                 System.out.println("Please enter the semester:");
                                                                 String semester = input.nextLine();
                                                                 enrolmentList.printAllCoursesInSemester(semester);
-                                                                System.out.println("Done, now you will be redirecting to main menu!");
 
+                                                                System.out.println("Done, now you will be redirecting to main menu!");
                                                                 mainMenu();
                                                                 choice = Integer.parseInt(input.nextLine());
                                                         }

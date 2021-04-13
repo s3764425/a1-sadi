@@ -2,8 +2,11 @@ package EnrolmentSystem;
 
 import EnrolmentSystem.Course.Course;
 import EnrolmentSystem.Student.Student;
+import EnrolmentSystem.StudentEnrolment.StudentEnrolment;
+import EnrolmentSystem.StudentEnrolment.StudentEnrolmentList;
 
 import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -16,19 +19,6 @@ import static EnrolmentSystem.Course.CourseList.courseList;
 import static EnrolmentSystem.Student.StudentList.studentList;
 
 public class CSV{
-
-    public static void main(String[] args) {
-        List<Student> students = readStudentsFromCSV();
-        List<Course> courses = readCoursesFromCSV();
-
-        // let's print all the person read from CSV file
-        for (Student student : studentList) {
-            System.out.println(student);
-        }
-        for (Course course : courseList) {
-            System.out.println(course);
-        }
-    }
 
     static List<Student> readStudentsFromCSV() {
         List<Student> students = new ArrayList<>();
@@ -52,11 +42,10 @@ public class CSV{
 
                 Student student = createStudent(attributes);
 
-                // adding book into ArrayList
+                // adding student into ArrayList
                 studentList.add(student);
 
                 // read next line before looping
-                // if end of file reached, line would be null
                 line = br.readLine();
             }
 
@@ -80,7 +69,7 @@ public class CSV{
         List<Course> courses = new ArrayList<>();
         Path pathToFile = Paths.get("default.csv");
 
-        // create an instance of BufferedReader
+        // BufferedReader instance
         // using try with resource, Java 7 feature to close resources
         try (BufferedReader br = Files.newBufferedReader(pathToFile,
                 StandardCharsets.UTF_8)) {
@@ -122,4 +111,43 @@ public class CSV{
         return new Course(courseID, courseName, courseCredit);
     }
 
+    static List<String> readSemestersFromCSV() {
+        List<String> semesterList = new ArrayList<>();
+        Path pathToFile = Paths.get("default.csv");
+
+        // BufferedReader instance
+        try (BufferedReader br = Files.newBufferedReader(pathToFile,
+                StandardCharsets.UTF_8)) {
+
+            // read the first line
+            String line = br.readLine();
+
+            // loop until all lines are read
+            while (line != null) {
+
+                // use string.split to load a string array with the values from
+                // the file, using a comma as the delimiter
+                String[] attributes = line.split(",");
+
+                String semester = createSemester(attributes);
+
+                semesterList.add(semester);
+                // read next line before looping
+                // if end of file reached, line would be null
+                line = br.readLine();
+            }
+
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+
+        return semesterList;
+    }
+
+    private static String createSemester(String[] metadata) {
+        // create and return book of this metadata
+        return metadata[6];
+    }
+
 }
+

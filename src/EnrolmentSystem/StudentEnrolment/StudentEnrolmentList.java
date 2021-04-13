@@ -1,11 +1,13 @@
 package EnrolmentSystem.StudentEnrolment;
 
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class StudentEnrolmentList implements StudentEnrolmentManager {
     private static final List<StudentEnrolment> studentEnrolmentList = new ArrayList<StudentEnrolment>();
+    private static final List<String> semesterList = new ArrayList<String>();
 
     public void printAllCoursesForStudentInSemester(String studentId, String semester) {
         for (StudentEnrolment studentEnrolmentList : studentEnrolmentList) {

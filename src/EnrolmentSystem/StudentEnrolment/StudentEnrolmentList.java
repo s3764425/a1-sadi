@@ -1,9 +1,12 @@
 package EnrolmentSystem.StudentEnrolment;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.*;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class StudentEnrolmentList implements StudentEnrolmentManager {
     private static final List<StudentEnrolment> studentEnrolmentList = new ArrayList<StudentEnrolment>();
@@ -90,11 +93,10 @@ public class StudentEnrolmentList implements StudentEnrolmentManager {
         }
         else {
             for (StudentEnrolment studentEnrolment: studentEnrolmentList) {
-                System.out.println(studentEnrolment.toString());
-            }
+                System.out.println(studentEnrolment.toString());}
         }
     }
-
 }
+
 
 

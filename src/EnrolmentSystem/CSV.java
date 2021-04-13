@@ -2,11 +2,8 @@ package EnrolmentSystem;
 
 import EnrolmentSystem.Course.Course;
 import EnrolmentSystem.Student.Student;
-import EnrolmentSystem.StudentEnrolment.StudentEnrolment;
-import EnrolmentSystem.StudentEnrolment.StudentEnrolmentList;
 
 import java.io.BufferedReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -24,8 +21,7 @@ public class CSV{
         List<Student> students = new ArrayList<>();
         Path pathToFile = Paths.get("default.csv");
 
-        // create an instance of BufferedReader
-        // using try with resource, Java 7 feature to close resources
+        // BufferedReader instance
         try (BufferedReader br = Files.newBufferedReader(pathToFile,
                 StandardCharsets.UTF_8)) {
 
@@ -35,9 +31,7 @@ public class CSV{
             // loop until all lines are read
             while (line != null) {
 
-                // use string.split to load a string array with the values from
-                // each line of
-                // the file, using a comma as the delimiter
+                // use string.split to load a string array and a comma as the delimiter
                 String[] attributes = line.split(",");
 
                 Student student = createStudent(attributes);
@@ -61,7 +55,7 @@ public class CSV{
         String student = metadata[1];
         String birthdate = metadata[2];
 
-        // create and return book of this metadata
+        // create and return students
          return new Student(id, student, birthdate);
     }
 
@@ -70,19 +64,13 @@ public class CSV{
         Path pathToFile = Paths.get("default.csv");
 
         // BufferedReader instance
-        // using try with resource, Java 7 feature to close resources
         try (BufferedReader br = Files.newBufferedReader(pathToFile,
                 StandardCharsets.UTF_8)) {
-
             // read the first line from the text file
             String line = br.readLine();
-
-            // loop until all lines are read
             while (line != null) {
 
-                // use string.split to load a string array with the values from
-                // each line of
-                // the file, using a comma as the delimiter
+                // use string.split to load a string array and a comma as the delimiter
                 String[] attributes = line.split(",");
 
                 Course course = createCourse(attributes);
@@ -107,7 +95,7 @@ public class CSV{
         String courseName = metadata[4];
         int courseCredit = Integer.parseInt(metadata[5]);
 
-        // create and return book of this metadata
+        // create and return courses
         return new Course(courseID, courseName, courseCredit);
     }
 
@@ -125,15 +113,13 @@ public class CSV{
             // loop until all lines are read
             while (line != null) {
 
-                // use string.split to load a string array with the values from
-                // the file, using a comma as the delimiter
+                // use string.split to load a string array and a comma as the delimiter
                 String[] attributes = line.split(",");
 
                 String semester = createSemester(attributes);
 
                 semesterList.add(semester);
                 // read next line before looping
-                // if end of file reached, line would be null
                 line = br.readLine();
             }
 
@@ -145,7 +131,7 @@ public class CSV{
     }
 
     private static String createSemester(String[] metadata) {
-        // create and return book of this metadata
+        // create and return semesters
         return metadata[6];
     }
 

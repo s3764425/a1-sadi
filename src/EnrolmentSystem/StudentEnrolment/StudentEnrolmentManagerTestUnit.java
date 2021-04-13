@@ -8,6 +8,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class StudentEnrolmentManagerTestUnit extends StudentEnrolmentList {
@@ -49,6 +53,7 @@ class StudentEnrolmentManagerTestUnit extends StudentEnrolmentList {
 
     @Test
     void testUpdate() {
+
     }
 
     @Test
@@ -57,9 +62,11 @@ class StudentEnrolmentManagerTestUnit extends StudentEnrolmentList {
 
     @Test
     void testGetOne() {
+
     }
 
     @Test
     void testGetAll() {
     }
+
 }

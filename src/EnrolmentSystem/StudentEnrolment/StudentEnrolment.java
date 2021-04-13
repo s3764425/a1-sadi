@@ -4,7 +4,10 @@ import EnrolmentSystem.Course.Course;
 import EnrolmentSystem.Student.Student;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StudentEnrolment{
     private Student student;
@@ -46,4 +49,5 @@ public class StudentEnrolment{
     public String toString() {
         return student + ", " + course + ", " + semester + '.';
     }
+
 }
